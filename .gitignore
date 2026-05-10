@@ -1,0 +1,29 @@
+# ── Heavy data folders ─────────────────────────────────────────────────────
+pickleball/data/
+pickleball/vid/
+pickleball/output/
+
+# ── Model weights ──────────────────────────────────────────────────────────
+*.pt
+*.pth
+*.onnx
+*.engine
+
+# ── Python ────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# ── Jupyter ───────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+
+# ── OS / editor ───────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
