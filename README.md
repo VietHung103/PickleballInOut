@@ -2,6 +2,8 @@
 
 Automated system that watches a pickleball match video and calls whether the ball lands **IN** or **OUT** of the court, using three computer vision models working in sequence.
 
+<video src="output.mp4" controls width="100%"></video>
+
 ---
 
 ## Project Goal
