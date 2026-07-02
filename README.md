@@ -2,13 +2,14 @@
 
 Automated system that watches a pickleball match video and calls whether the ball lands **IN** or **OUT** of the court, using three computer vision models working in sequence.
 
-<video src="output.mp4" controls width="100%"></video>
-
 ---
 
 ## Project Goal
 
-Replace manual line calls with an AI referee. Given a match video filmed from an elevated side-view camera, the system:
+The goal of this project is to develop a deep learning-based system that can analyze a video
+containing a controversial pickleball rally and provide support for in/out decisions. Given a rally
+video as input, the system automatically detects the ball, tracks its trajectory, identifies the bounce
+location, and determines whether the ball lands inside or outside the court boundary:
 
 1. Detects the ball in every frame (YOLOv11s)
 2. Tracks the ball trajectory across frames (TrackNetV5 5-frame)
@@ -25,23 +26,23 @@ Replace manual line calls with an AI referee. Given a match video filmed from an
 Raw video (.mp4)
     │
     ▼
-[Model 1] Ball Detection — YOLOv11s                          ✅ Done
+[Model 1] Ball Detection — YOLOv11s                          Done
     │   Latest_Yolo.ipynb — dataset prep + training
     │   Output: (x, y, confidence) per frame
     │
     ▼
-[Model 2] Ball Tracking — TrackNetV5 5-frame                 ✅ Done
+[Model 2] Ball Tracking — TrackNetV5 5-frame                 Done
     │   Tracknetv5_last.ipynb — training
     │   TracknetV5_Reconstruct.ipynb — training result plots
     │   Output: (cx, cy) heatmap per frame + smoothed trajectory
     │
     ▼
-[Model 3] Court Keypoint Detection — PickleballCourtNet      ✅ Done
+[Model 3] Court Keypoint Detection — PickleballCourtNet      Done
     │   Pickleball_Court_Net.ipynb — training
     │   Output: 12 stabilized court keypoints per frame
     │
     ▼
-[System] Bounce Detection + IN/OUT Decision                  ✅ Done
+[System] Bounce Detection + IN/OUT Decision                  Done
     │   System_Combination.ipynb — end-to-end pipeline
     │   TrackNetV5 only (no YOLO) + 3-pass bounce detector
     │   Output: bounce frame + IN/OUT call + annotated video
@@ -448,14 +449,13 @@ All training notebooks run on **Google Colab with A100 GPU** and read data from 
 
 | Component | Status |
 |-----------|--------|
-| Ball detection dataset (old + new data merged) | ✅ Done |
-| YOLOv11s ball detector training | ✅ Done |
-| TrackNetV5 5-frame training | ✅ Done |
-| TrackNetV5 training result visualization | ✅ Done |
-| PickleballCourtNet (12 KPs) training | ✅ Done |
-| Court KP post-processing (Hough + KPStabilizer) | ✅ Done |
-| Homography pixel → real-world cm | ✅ Done |
-| 3-pass bounce detector (VEL + GAP + PARAB) | ✅ Done |
-| IN/OUT decision (polygon + cm fallback) | ✅ Done |
-| FPS-matched TrackNetV5 inference (30fps train → 60fps video) | 🔜 Optional |
-| Multi-clip evaluation with ground-truth labels | 🔜 Planned |
+| Ball detection dataset (old + new data merged) | Done |
+| YOLOv11s ball detector training | Done |
+| TrackNetV5 5-frame training | Done |
+| TrackNetV5 training result visualization | Done |
+| PickleballCourtNet (12 KPs) training | Done |
+| Court KP post-processing (Hough + KPStabilizer) | Done |
+| Homography pixel → real-world cm | Done |
+| 3-pass bounce detector (VEL + GAP + PARAB) | Done |
+| IN/OUT decision (polygon + cm fallback) | Done |
+
